@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Display from './components/display/Display';
+import FormWithReducer from './components/form-with-reducer/FormWithReducer';
+import FormWithState from './components/form-with-state/FormWithState';
+import Form from './components/form/Form';
+import LifeCycle from './components/lifecycle/LifeCycle';
+import Summary from './components/summary/Summary';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Calculator */}
+      {/* <Form/>
+      <FormWithState/> */}
+      {/* <FormWithReducer/> */}
+      <Summary/>
     </div>
   );
 }
