@@ -1,21 +1,72 @@
-import './App.css';
-import Display from './components/display/Display';
-import FormWithReducer from './components/form-with-reducer/FormWithReducer';
-import FormWithState from './components/form-with-state/FormWithState';
-import Form from './components/form/Form';
-import LifeCycle from './components/lifecycle/LifeCycle';
-import Summary from './components/summary/Summary';
+import React , {useEffect , useState} from 'react'
+import axios from 'axios'
+import {Card} from 'antd'
+import './App.css'
 
-function App() {
+
+const App = () => {
+  const [users , setUsers] = useState([])
+
+  const fetchData = () => {
+    axios('http://localhost:8080/api/v1/phones')
+    .then((response)=>{
+      const data = response.data
+      console.log(data)
+      setUsers(data)
+    })
+    .catch((error)=>{})
+  }
+
+  const updateData = () => {
+    // axios(url,config)
+    axios('http://localhost:8080/api/v1/phones',{
+      method : 'put',
+      data : {
+
+      }
+    })
+  }
+
+  const postData = () => {
+    axios('http://localhost:8080/api/v1/phones',{
+      method : 'post',
+      data : {
+        
+      }
+    })
+  }
+
+  const deleteData = (id) => {
+    axios(`http://localhost:8080/api/v1/phones/${id}`, {
+      method : 'delete'
+    })
+  }
+
+  useEffect (fetchData , [])
   return (
-    <div className="App">
-      {/* Calculator */}
-      {/* <Form/>
-      <FormWithState/> */}
-      {/* <FormWithReducer/> */}
-      <Summary/>
+    <div className='App'>
+      <h1>User List</h1>
+      <div className='user-list'>
+     
+    {
+    console.log(user => {
+      return ( 
+        <Card title={user.name} bordered={false} style={{ width: 300 }}>
+        <p>Name : {user.name}</p>
+        <p>Email: {user.email}</p>
+        <p>Catalog: {user.catalog}</p>
+        <p>Imei: {user.imei}</p>
+        {/* <p>Address : {`${user.address.suite} - ${user.address.street} - ${user.address.city}`}</p> */}
+      </Card>
+      )
+    })
+    }
     </div>
-  );
+    {/* <button onClick ={updateData}>UPDATE</button>
+    <button onClick ={postData}>POST</button>
+    <button onClick ={deleteData} >DELETE</button> */}
+    </div>
+  )
 }
 
-export default App;
+export default App
