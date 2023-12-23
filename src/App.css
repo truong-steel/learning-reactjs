@@ -1,11 +1,8 @@
 .App {
-  text-align: center;
-  background-color: gray;
-  padding : 10px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .user-list {
-  display: flex;
+  display:list-item;
   gap : 10px;
   flex-wrap: wrap;
   justify-content: center;

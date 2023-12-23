@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './LifeCycle.css'
-import Display from '../display/Display'
+import Display from '../../display/Display'
 
 
 const LifeCycle = () => {

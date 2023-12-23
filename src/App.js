@@ -1,72 +1,45 @@
-import React , {useEffect , useState} from 'react'
-import axios from 'axios'
-import {Card} from 'antd'
-import './App.css'
+import { useState } from "react";
+import "./App.css"; // --> ES6, version của JavaScript
+import { Button } from "antd";
+import Display from "./components/display/Display";
+import Summary from "./components/summary/Summary";
+import ParentToChild from "./components/lesson7/ParentToChild";
+import ChildToParent from "./components/lesson7/ChildToParent";
+import ChildToChild from "./components/lesson7/ChildToChild";
+import Navigation from "./components/navigation/Navigation";
+import HomePage from "./components/lesson7-assignment/home-page/HomePage";
 
+export default function App() {
+  const [count, setCount] = useState(0);
 
-const App = () => {
-  const [users , setUsers] = useState([])
-
-  const fetchData = () => {
-    axios('http://localhost:8080/api/v1/phones')
-    .then((response)=>{
-      const data = response.data
-      console.log(data)
-      setUsers(data)
-    })
-    .catch((error)=>{})
+  function handleAdd() {
+    console.log("ADD");
+    const newCount = count + 1;
+    setCount(newCount);
   }
 
-  const updateData = () => {
-    // axios(url,config)
-    axios('http://localhost:8080/api/v1/phones',{
-      method : 'put',
-      data : {
+  const handleSubtract = () => {
+    console.log("SUBTRACT");
+    const newCount = count - 1;
+    setCount(newCount);
+  };
 
-      }
-    })
-  }
+  const isDisabled = count === 0;
 
-  const postData = () => {
-    axios('http://localhost:8080/api/v1/phones',{
-      method : 'post',
-      data : {
-        
-      }
-    })
-  }
-
-  const deleteData = (id) => {
-    axios(`http://localhost:8080/api/v1/phones/${id}`, {
-      method : 'delete'
-    })
-  }
-
-  useEffect (fetchData , [])
   return (
-    <div className='App'>
-      <h1>User List</h1>
-      <div className='user-list'>
-     
-    {
-    console.log(user => {
-      return ( 
-        <Card title={user.name} bordered={false} style={{ width: 300 }}>
-        <p>Name : {user.name}</p>
-        <p>Email: {user.email}</p>
-        <p>Catalog: {user.catalog}</p>
-        <p>Imei: {user.imei}</p>
-        {/* <p>Address : {`${user.address.suite} - ${user.address.street} - ${user.address.city}`}</p> */}
-      </Card>
-      )
-    })
-    }
+    // thêm giao diện --> JSX
+    // Bản chất --> JS object --> lúc code thì nhìn giống HTML
+    <div className="App">
+      {/* <p className={`${isDisabled ? "disabled" : "count"}`}>Count: {count}</p> */}
+      {/* <Display data={count} disabled={isDisabled} />
+      <Button onClick={handleAdd} type="primary">ADD</Button>
+      <Button disabled={isDisabled} onClick={handleSubtract} type="dashed">SUBTRACT</Button> */}
+      {/* <Summary /> */}
+      {/* <ParentToChild /> */}
+      {/* <ChildToParent /> */}
+      {/* <ChildToChild /> */}
+      {/* <Navigation /> */}
+      <HomePage/>
     </div>
-    {/* <button onClick ={updateData}>UPDATE</button>
-    <button onClick ={postData}>POST</button>
-    <button onClick ={deleteData} >DELETE</button> */}
-    </div>
-  )
+  );
 }
-
-export default App
