@@ -13,7 +13,13 @@ console.log('Form with State')
     <div>
         <h1>Login With State</h1>
         Username : <input onChange={handleChangeUsername} value={username} autoFocus placeholder='enter username'/>
+        <br/>
+        <br/>
+
         Password : <input onChange={handleChangePassword} value={password} placeholder = 'enter password'/>
+        <br/>
+        <br/>
+
         <button onClick = {handleLogin}>Login</button>
     </div>
   )

@@ -7,7 +7,9 @@ import ParentToChild from "./components/lesson7/ParentToChild";
 import ChildToParent from "./components/lesson7/ChildToParent";
 import ChildToChild from "./components/lesson7/ChildToChild";
 import Navigation from "./components/navigation/Navigation";
-import HomePage from "./components/lesson7-assignment/home-page/HomePage";
+import MyApp from './components/lesson11/my-app/MyApp'
+import Provider from './components/lesson10/Provider'
+
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -39,7 +41,13 @@ export default function App() {
       {/* <ChildToParent /> */}
       {/* <ChildToChild /> */}
       {/* <Navigation /> */}
-      <HomePage/>
+      {/* <Provider><HomePage/></Provider> */}
+      {/* <Parent/> */}
+      {/* <Parent/> */}
+      {/* <ParentWithContext/> */}
+      {/* <Calculator/> */}
+      {/* <Provider><Parent/></Provider> */}
+      <Provider><MyApp/></Provider>
     </div>
   );
 }

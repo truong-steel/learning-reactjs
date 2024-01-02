@@ -18,9 +18,12 @@ console.log('Form render')
   return (
     <div>
         <h1>Login With Ref</h1>
-        Username<input id='username' ref={usernameRef} placeholder ='Enter Username here . . .'/>
-        
-        Password<input id='password' ref={passwordRef} placeholder ='Enter Password here . . .'/>
+        Username :<input id='username' ref={usernameRef} placeholder ='Enter Username here . . .'/>
+        <br/>
+        <br/>
+        Password :<input id='password' ref={passwordRef} placeholder ='Enter Password here . . .'/>
+        <br/>
+        <br/>
         <button onClick={handleLogin}>Login</button>
     </div>
   )

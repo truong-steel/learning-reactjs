@@ -21,26 +21,13 @@ const reducer = (state , action) => {
     }
     
 }
-const FormWithReducer = () => {
-    // const [username , setName] = useState('')
-    // const [password , setPassword] = useState('')
-
-    // const [user , setUser] = useState({
-    //     username : '',
-    //     password : ''
-    // })
-    
+const FormWithReducer = () => { 
     const [user , dispatch] = useReducer(reducer, initialUser)
 
     const handleLogin = () => {
         console.log({user})
     }
     const handleChangeUsername = (event) => {
-        // const newUser = {
-        //     password: user.password,
-        //     username: event.target.value
-        // }
-        // setUser(newUser)
         const action = {
             type : 'CHANGE_USERNAME',
             payload : event.target.value
@@ -48,11 +35,6 @@ const FormWithReducer = () => {
         dispatch(action)
     }
     const handleChangePassword = (event) => {
-        // const newUser = {
-        //     username: user.username,
-        //     password: event.target.value
-        // }
-        // setUser(newUser)
         const action = {
             type : 'CHANGE_PASSWORD',
             payload : event.target.value
@@ -64,7 +46,13 @@ console.log('Form with Reducer')
     <div>
         <h1>Login With Reducer</h1>
         Username : <input onChange={handleChangeUsername} value={user.username} autoFocus placeholder='enter username'/>
+        <br/>
+        <br/>
+
         Password : <input onChange={handleChangePassword} value={user.password} placeholder = 'enter password'/>
+        <br/>
+        <br/>
+
         <button onClick = {handleLogin}>Login</button>
     </div>
   )

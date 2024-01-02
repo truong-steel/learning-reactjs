@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Router, Route, Navigate, Link , Switch } from "r
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 
-import "./HomePage.css";
+import "./MyApp.css";
 import Calculator from "../calculator/Calculator";
 import Form from "../form-with-ref/Form";
 import FormWithState from "../form-with-state/FormWithState";
@@ -13,6 +13,10 @@ import Axios from "../axios/Axios";
 import ParentToChild from "../parent-to-child/ParentToChild";
 import ChildToParent from "../child-to-parent/ChildToParent";
 import ChildToChild from "../child-to-child/ChildToChild";
+import RegisterForm from "../../lesson10/Parent";
+
+
+
 
 function getItem(label, key, icon, children, type) {
     return {
@@ -26,6 +30,9 @@ function getItem(label, key, icon, children, type) {
 
   const items = [
     getItem('Navigation 1', 'sub1', <AppstoreOutlined />, [
+      getItem(<Link to="/life-cycle" className="link">
+      Life Cycle
+  </Link>),
       getItem(<Link to="/calculator" className="link">
       Calculator
   </Link>),
@@ -33,7 +40,7 @@ function getItem(label, key, icon, children, type) {
       Axios
   </Link>),
     ]),
-    getItem('Life Cycle', 'sub2', <AppstoreOutlined />, [
+    getItem('Hooks', 'sub2', <AppstoreOutlined />, [
       getItem(<Link to="/form-with-ref" className="link">
       Form With Ref
   </Link>),
@@ -42,6 +49,9 @@ function getItem(label, key, icon, children, type) {
   </Link>),
       getItem(<Link to="/form-with-reducer" className="link">
       Form With Reducer
+  </Link>),
+      getItem(<Link to="/use-context" className="link">
+      Form With Context
   </Link>)
     ]),
     {
@@ -87,9 +97,10 @@ function Menu2 () {
  function Menu9 () {
     return <ChildToChild/>
  }
- const onClick = (e) => {
-    console.log('click ', e);
-    }
+ function Menu10 () {
+   return <RegisterForm/>
+ }
+ 
 
 class HomePage extends Component {
     
@@ -100,14 +111,15 @@ class HomePage extends Component {
         <div className="Menu">
             <h1>MENU</h1>
             <Menu
-      onClick={onClick}
+      
       style={{
-        width: 256,
+        width: 256, 
       }}
       defaultSelectedKeys={['1']}
       defaultOpenKeys={['sub1']}
       mode="inline"
       items={items}
+      
     />
                 </div>
             <div className='Content'>
@@ -121,6 +133,7 @@ class HomePage extends Component {
                 <Route path="/parent-to-child" element={<Menu7/>} />
                 <Route path="/child-to-parent" element={<Menu8/>} />
                 <Route path="/child-to-child" element={<Menu9/>} />
+                <Route path="/use-context" element={<Menu10/>} />
             </Routes>
             </div>
         </div>
